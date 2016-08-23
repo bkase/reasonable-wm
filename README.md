@@ -2,10 +2,10 @@
 
 > A functional tiling "window manager" for the web written in Reason
 
-* [Idea](#Idea)
-* [Work TODO](#TODO)
-* [Build Instructions](#Build-Instructions)
-* [Dev Instructions](#Dev-Instructions)
+* [Idea](#idea)
+* [Work TODO](#todo)
+* [Build Instructions](#build-instructions)
+* [Dev Instructions](#dev-instructions)
 
 ### Idea
 
