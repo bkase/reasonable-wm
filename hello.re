@@ -69,7 +69,7 @@ let module Z = {
       let rightmostFromList: t 'a =
         List.fold_left(folder) (one x) xs;
 
-      rightmostFromList |> leftBy (List.length xs)
+      rightmostFromList |> leftBy ((List.length xs) - idx)
     }
   };
 };
@@ -161,6 +161,10 @@ let module Render = {
 
   let undraw: layout => windows =
       Option.map (Z.map (fun (id, _) => id));
+
+  let dump: layout => (list (WinId.t, Rect.t), int) = fun
+    | None => ([], -1)
+    | Some z => Z.toList z;
 };
 
 /* Pretend a user is inputting these commands */
@@ -174,5 +178,5 @@ let ws =
   spawn |>
   Render.draw BigLeft;
 
-Js.log(ws);
+Js.log(ws |> Render.dump);
 

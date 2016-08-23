@@ -2,6 +2,11 @@
 
 > A functional tiling "window manager" for the web written in Reason
 
+* [Idea](#Idea)
+* [Work TODO](#TODO)
+* [Build Instructions](#Build-Instructions)
+* [Dev Instructions](#Dev-Instructions)
+
 ### Idea
 
 Building a functional [tiling windowing manager](https://en.wikipedia.org/wiki/Tiling_window_manager) for the web seems like a simple (but not too simple) first project to play with Reason.
@@ -50,23 +55,40 @@ A Zipper can move the focus left and right and insert near the focus in `O(1)` t
 
 This is a work in progress.
 
-### Instructions
+### TODO:
 
-To build the `js`:
+* Build (at least one) frontend renderer (react?)
+* Use bucklescript magic to create JSON records
+
+### Build Instructions
+
+Make sure you [follow the instructions here to install Reason](https://github.com/facebook/reason) (tested on v0.0.6)
+
+Then install [BuckleScript](https://github.com/bloomberg/bucklescript) in a local `node_modules/` (`mkdir -p node_modules` in this directory if necessary).
+
+To build the `hello.js`:
 
 ```sh
+# this calls the bucklescript compiler with the necessary options
 ./build.sh
 ```
 
-To compile with good error messages:
+To package the `out.js` for `index.html`:
+(install browserify if necessary `npm install -g browserify`)
+
+```sh
+browserify hello.js > out.js
+```
+
+Then `open index.html` in any browser and (for now) open up the console to see the output.
+
+### Dev Instructions
+
+To compile with good error messages: install [BetterErrors](https://github.com/npm-ml/BetterErrors)) and run:
 
 ```sh
 ocamlc -pp refmt -o _build/out -impl hello.re 2>&1 | huh
 ```
 
-To package for `index.html`:
-
-```sh
-browserify hello.js > out.js
-```
+If it compiles (up to the `Js` usage), I then do `./build.sh` and look at the `hello.js` artifact.
 
